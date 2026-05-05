@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <div>RONG</div>
+  <div>
+    <a href="checkout.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="product">
+    <img src="https://via.placeholder.com/400x400.png">
+
+    <div>
+      <h1 id="name"></h1>
+      <h2 id="price"></h2>
+
+      <p>Minimalist garment inspired by modern Chinese aesthetics.</p>
+
+      <button onclick="add()">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const price = params.get("price");
+
+document.getElementById("name").innerText = name;
+document.getElementById("price").innerText = "$" + price;
+
+function add() {
+  addToCart(name, Number(price));
+}
+</script>
+
+</body>
+</html>
