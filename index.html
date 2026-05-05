@@ -1,268 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RONG | Contemporary Fashion</title>
-
-<style>
-:root {
-  --black: #0e0e0e;
-  --white: #ffffff;
-  --gray: #f2f2f2;
-  --accent: #b30000;
-}
-
-body {
-  margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  background: var(--white);
-  color: var(--black);
-}
-
-/* HEADER */
-header {
-  background: var(--black);
-  color: white;
-  padding: 30px;
-  text-align: center;
-  letter-spacing: 6px;
-}
-
-/* GRID */
-.container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
-}
-
-.card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  background: #ddd;
-}
-
-.card-body {
-  padding: 15px;
-}
-
-.price {
-  color: var(--accent);
-  font-weight: bold;
-}
-
-/* BUTTON */
-button {
-  background: var(--black);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: var(--accent);
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  max-width: 400px;
-  width: 90%;
-}
-
-/* CART */
-.cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--black);
-  color: white;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.cart-panel {
-  position: fixed;
-  right: -400px;
-  top: 0;
-  width: 350px;
-  height: 100%;
-  background: white;
-  padding: 20px;
-  transition: 0.3s;
-  overflow-y: auto;
-}
-
-.cart-panel.active {
-  right: 0;
-}
-
-/* CHECKOUT */
-.checkout input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  opacity: 0.6;
-}
-</style>
+  <title>RONG</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <h1>RONG</h1>
-  <p>Contemporary Chinese Streetwear</p>
-</header>
+<nav>
+  <div>RONG</div>
+  <div>
+    <a href="checkout.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+  </div>
+</nav>
 
-<div class="cart" onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</div>
+<div class="hero">RONG</div>
 
 <div class="container">
   <div class="grid">
 
-    <!-- PRODUCTS -->
-    <div class="card" onclick="openProduct('Ink Cloud Tee',45)">
+    <div class="card" onclick="location.href='product.html?name=Ink Cloud Tee&price=45'">
       <img src="https://via.placeholder.com/400x400.png?text=Black+Tee">
-      <div class="card-body">
-        <h3>Ink Cloud Tee</h3>
-        <div class="price">$45</div>
-      </div>
+      <h3>Ink Cloud Tee</h3>
+      <div class="price">$45</div>
     </div>
 
-    <div class="card" onclick="openProduct('Silk Fade Tee',48)">
+    <div class="card" onclick="location.href='product.html?name=Silk Fade Tee&price=48'">
       <img src="https://via.placeholder.com/400x400.png?text=White+Tee">
-      <div class="card-body">
-        <h3>Silk Fade Tee</h3>
-        <div class="price">$48</div>
-      </div>
+      <h3>Silk Fade Tee</h3>
+      <div class="price">$48</div>
     </div>
 
-    <div class="card" onclick="openProduct('Red Thread LS',65)">
+    <div class="card" onclick="location.href='product.html?name=Red Thread LS&price=65'">
       <img src="https://via.placeholder.com/400x400.png?text=Black+Long+Sleeve">
-      <div class="card-body">
-        <h3>Red Thread Long Sleeve</h3>
-        <div class="price">$65</div>
-      </div>
+      <h3>Red Thread LS</h3>
+      <div class="price">$65</div>
     </div>
 
-    <div class="card" onclick="openProduct('Lotus LS',70)">
+    <div class="card" onclick="location.href='product.html?name=Lotus LS&price=70'">
       <img src="https://via.placeholder.com/400x400.png?text=Grey+Long+Sleeve">
-      <div class="card-body">
-        <h3>Lotus Archive Long Sleeve</h3>
-        <div class="price">$70</div>
-      </div>
+      <h3>Lotus LS</h3>
+      <div class="price">$70</div>
     </div>
 
   </div>
 </div>
 
-<!-- PRODUCT MODAL -->
-<div class="modal" id="productModal">
-  <div class="modal-content">
-    <h2 id="productName"></h2>
-    <p id="productPrice"></p>
-
-    Quantity:
-    <input type="number" id="qty" value="1" min="1">
-
-    <button onclick="addToCart()">Add to Cart</button>
-    <button onclick="closeModal()">Close</button>
-  </div>
-</div>
-
-<!-- CART PANEL -->
-<div class="cart-panel" id="cartPanel">
-  <h2>Your Cart</h2>
-  <div id="cartItems"></div>
-
-  <h3>Checkout</h3>
-  <div class="checkout">
-    <input placeholder="Full Name">
-    <input placeholder="Address">
-    <input placeholder="City">
-    <input placeholder="Zip Code">
-    <button>Place Order</button>
-  </div>
-</div>
-
-<footer>
-© 2026 RONG
-</footer>
-
-<script>
-let currentProduct = {};
-let cart = [];
-
-function openProduct(name, price) {
-  currentProduct = {name, price};
-  document.getElementById('productName').innerText = name;
-  document.getElementById('productPrice').innerText = "$" + price;
-  document.getElementById('productModal').style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById('productModal').style.display = "none";
-}
-
-function addToCart() {
-  let qty = document.getElementById('qty').value;
-  cart.push({...currentProduct, qty});
-  updateCart();
-  closeModal();
-}
-
-function updateCart() {
-  let cartDiv = document.getElementById('cartItems');
-  cartDiv.innerHTML = "";
-  let count = 0;
-
-  cart.forEach(item => {
-    count += parseInt(item.qty);
-    cartDiv.innerHTML += `<p>${item.name} x ${item.qty}</p>`;
-  });
-
-  document.getElementById('cartCount').innerText = count;
-}
-
-function toggleCart() {
-  document.getElementById('cartPanel').classList.toggle('active');
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
