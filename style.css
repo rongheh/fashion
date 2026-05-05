@@ -122,3 +122,12 @@ footer {
   background: var(--black);
   color: white;
 }
+.card img,
+.product img {
+  transition: transform 0.6s ease;
+  filter: contrast(1.05) saturate(0.95);
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
