@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Product</title>
+  <meta charset="UTF-8">
+  <title>RONG | Product</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+<body>
+
+<!-- NAV -->
 <nav>
   <div class="logo"><a href="index.html">RONG</a></div>
 
@@ -14,72 +19,82 @@
     <a href="checkout.html">CART</a>
   </div>
 </nav>
-<body>
 
-<nav>
-  <div class="logo"><a href="index.html">RONG</a></div>
-  <div>
-    <a href="index.html">HOME</a>
-    <a href="checkout.html">CART <span id="cartCount" class="cart-count">0</span></a>
-  </div>
-</nav>
+<!-- PRODUCT SECTION -->
+<div class="container" style="margin-top:120px;">
 
-<div class="container">
   <div class="product">
-    <img id="productImg">
 
+    <!-- PRODUCT IMAGE -->
+    <img id="productImg" style="width:100%; max-width:450px; border-radius:8px;">
+
+    <!-- PRODUCT INFO -->
     <div>
-      <h1 id="name"></h1>
-      <h2 id="price"></h2>
-      <p>Refined streetwear piece blending traditional Chinese inspiration with modern silhouettes.</p>
 
-      <button onclick="add()">Add to Cart</button>
+      <h1 id="name"></h1>
+      <h2 id="price" style="color:#9b1c1c;"></h2>
+
+      <p style="opacity:0.75; line-height:1.6;">
+        A refined garment from RONG, designed with a focus on silhouette, structure, and modern minimalism inspired by contemporary Chinese fashion aesthetics.
+      </p>
+
+      <button onclick="addToCartItem()">Add to Cart</button>
+
+      <!-- REVIEWS -->
+      <div style="margin-top:50px;">
+        <h3 style="font-family:'Playfair Display', serif;">Reviews</h3>
+
+        <div class="review">
+          <p>★★★★★</p>
+          <p>"Insanely good fit. Feels premium."</p>
+        </div>
+
+        <div class="review">
+          <p>★★★★★</p>
+          <p>"Clean design. Looks exactly like high-end brands."</p>
+        </div>
+
+        <div class="review">
+          <p>★★★★☆</p>
+          <p>"Material is solid, slightly oversized but works well."</p>
+        </div>
+      </div>
+
     </div>
+
   </div>
+
 </div>
 
-<footer>© 2026 RONG</footer>
+<!-- FOOTER -->
+<footer>
+  © 2026 RONG
+</footer>
 
 <script src="script.js"></script>
+
 <script>
 const params = new URLSearchParams(window.location.search);
 
 const name = params.get("name");
 const price = params.get("price");
-const img = params.get("img");
+const imgId = params.get("img");
 
+// image mapping (your real product images)
 const images = {
-  1: "https://images.unsplash.com/photo-1520975916090-3105956dac38",
-  2: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
-  3: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b",
-  4: "https://images.unsplash.com/photo-1544441893-675973e31985"
+  "1": "https://www.repertoirefashion.co.uk/images/sunspel-mens-plain-basic-t-shirt-classic-fit-cotton-black-tee-p35930-167704_image.jpg",
+  "2": "https://i5.walmartimages.com/seo/Ralph-Lauren-Womens-LS-Basic-T-Shirt-Black-Small_53d47733-84dd-41be-9f3a-409205becd7f.c0c1f34615779ff93198f91c85e20826.jpeg"
 };
 
 document.getElementById("name").innerText = name;
 document.getElementById("price").innerText = "$" + price;
-document.getElementById("productImg").src = images[img];
+document.getElementById("productImg").src = images[imgId];
 
-function add() {
+// add to cart function
+function addToCartItem() {
   addToCart(name, Number(price));
 }
 </script>
-<div style="margin-top:40px;">
-  <h3>Reviews</h3>
 
-  <div class="review">
-    <p>★★★★★</p>
-    <p>"Fit is perfect. Feels like a premium piece."</p>
-  </div>
-
-  <div class="review">
-    <p>★★★★★</p>
-    <p>"Minimal but high quality. Shipping was fast."</p>
-  </div>
-
-  <div class="review">
-    <p>★★★★☆</p>
-    <p>"Great fabric, slightly oversized but works well."</p>
-  </div>
-</div>
 </body>
 </html>
