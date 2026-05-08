@@ -144,7 +144,17 @@ footer {
   padding: 15px 0;
   border-bottom: 1px solid #eee;
 }
+.container input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
 
+button {
+  margin-top: 20px;
+}
 .review p {
   margin: 5px 0;
 }
